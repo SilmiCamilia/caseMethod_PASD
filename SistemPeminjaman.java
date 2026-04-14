@@ -50,6 +50,37 @@ public class SistemPeminjaman {
         System.out.println("\nSetelah diurutkan (Denda terbesar):");
         for (int i = 0; i < jumlahPinjam; i++) salinan[i].tampilPeminjaman();
     }
+    //method hitung frekuensi peminjaman tiap buku
+    void tampilBukuSeringDipinjam() {
+        int[] frekuensi = new int[daftarBuku.length];
+ 
+        for (int i = 0; i < jumlahPinjam; i++) {
+            for (int j = 0; j < daftarBuku.length; j++) {
+                if (daftarPinjam[i].buku.kodeBuku.equals(daftarBuku[j].kodeBuku)) {
+                    frekuensi[j]++;
+                    break;
+                }
+            }
+        }
+        //menampilkan frekuensi peminjaman semua buku
+        System.out.println("\n=== Frekuensi Peminjaman Buku ===");
+        for (int i = 0; i < daftarBuku.length; i++) {
+            System.out.println("- " + daftarBuku[i].judul + " : " + frekuensi[i] + " kali");
+        }
+ 
+        //mencari buku dengan frekuensi peminjaman tertinggi
+        int maxJml = 0;
+        for (int i = 1; i < frekuensi.length; i++) {
+            if (frekuensi[i] > frekuensi[maxJml]) {
+                maxJml = i;
+            }
+        }
+ 
+        System.out.println("\n>>> Buku paling sering dipinjam <<<");
+        System.out.println("Judul               : " + daftarBuku[maxJml].judul);
+        System.out.println("Kode                : " + daftarBuku[maxJml].kodeBuku);
+        System.out.println("Frekuensi peminjaman: " + frekuensi[maxJml] + " kali");
+    }
 
     //searching
     void cariByNIM(String nimCari) {
@@ -66,7 +97,7 @@ public class SistemPeminjaman {
             }
             sorted[j] = temp;
         }
-        
+
         int low  = 0;
         int high = jumlahPinjam - 1;
         int found = -1;

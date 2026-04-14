@@ -38,6 +38,7 @@ public class RuangBacaJTI {
             System.out.println("3. Tampilkan Peminjaman");
             System.out.println("4. Urutkan Berdasarkan Denda");
             System.out.println("5. Cari Berdasarkan NIM");
+            System.out.println("6. Buku Paling Sering Dipinjam");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilihan = liberari.nextInt();
@@ -60,6 +61,9 @@ public class RuangBacaJTI {
                     System.out.print("Masukkan NIM: ");
                     String nim = liberari.nextLine();
                     sistem.cariByNIM(nim);
+                    break;
+                     case 6:
+                    sistem.tampilBukuSeringDipinjam();
                     break;
                 case 0:
                     System.out.println("Program selesai");
